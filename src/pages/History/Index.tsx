@@ -1,6 +1,11 @@
+import { CyclesContext } from '../../contexts/CyclesContext'
+import { formatDistanceToNow } from 'date-fns'
+import ptBR from 'date-fns/locale/pt-BR'
 import { HistoryContainer, HistoryList, Status } from './styles'
+import { useContext } from 'react'
 
 export function History() {
+    const { cycles } = useContext(CyclesContext)
     return (
         <HistoryContainer>
             <h1>meu histórico</h1>
@@ -17,46 +22,29 @@ export function History() {
              
             </thead>
 <tbody>
-    <tr>
-        <td>tarefa</td>
-        <td>28 minutos</td>
-        <td>há 2 meses</td>
-        <td>
-            <Status statusColor='green' >Concluido</Status>
-        </td>
-    </tr>
-    <tr>
-        <td>tarefa</td>
-        <td>28 minutos</td>
-        <td>há 2 meses</td>
-        <td>
-        <Status statusColor='green'>Concluido</Status>
-        </td>
-    </tr>
-    <tr>
-        <td>tarefa</td>
-        <td>28 minutos</td>
-        <td>há 2 meses</td>
-        <td>
-        <Status statusColor='green'>Concluido</Status>
-        </td>
-    </tr>
-    <tr>
-        <td>tarefa</td>
-        <td>28 minutos</td>
-        <td>há 2 meses</td>
-        <td>
-        <Status statusColor='green'>Concluido</Status>
-        </td>
-    </tr>
-    <tr>
-        <td>tarefa</td>
-        <td>28 minutos</td>
-        <td>há 2 meses</td>
-        <td>
-        <Status statusColor='green'>Concluido</Status>
-        </td>
-    </tr>
+    {cycles.map(cycle => {
+        return (
+            <tr key={cycle.id}>
+                <td>{cycle.task}</td>
+                <td>{cycle.minutesAmount} minutos</td>
+                <td>{formatDistanceToNow(new Date(cycle.startDate), {
+                    addSuffix: true,
+                    locale: ptBR,
+                })}
+                </td>
+                <td>
+                    { cycle.finishedDate && (
+                    <Status statusColor="green">Concluído</Status>)}
+
+                    { cycle.interruptDate && (
+                    <Status statusColor="red">interrompido</Status>)}    
+
+                    {(!cycle.finishedDate && !cycle.interruptDate) && (
+                    <Status statusColor="yellow">Em andamento</Status>)}    
+                </td>
+            </tr>
+        )
+    })}
 </tbody>
 
                 </table>
