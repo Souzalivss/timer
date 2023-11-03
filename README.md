@@ -45,13 +45,13 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [Phosphor-react](https://phosphoricons.com/)
 - [date-fns](https://devdocs.io/date_fns/)
 - [npm](https://www.npmjs.com/)
-- [immer]()
-- [phosphor-react]()
-- [react-dom]()
-- [react-hook-form]()
-- [react-router-dom]()
-- [styled-components]()
-- [zod]()
+- [immer](https://www.npmjs.com/package/immer)
+- [phosphor-react](https://www.npmjs.com/package/@phosphor-icons/react)
+- [react-dom](https://pt-br.legacy.reactjs.org/docs/react-dom.html)
+- [react-hook-form](https://www.npmjs.com/package/react-hook-form)
+- [react-router-dom](https://www.npmjs.com/package/react-router-dom)
+- [styled-components](https://www.npmjs.com/package/styled-components/v/4.1.3)
+- [zod](https://www.npmjs.com/package/zod)
 ---
 
 <h1>
